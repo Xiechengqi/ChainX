@@ -104,6 +104,11 @@ jobs:
 
     - name: Build
       run: cargo build --release
+      
+    - name: scp
+      run: |
+        ls -alht target/release/chainx
+        ls -alht target
 
 #     - name: Get the version
 #       id: get_version
