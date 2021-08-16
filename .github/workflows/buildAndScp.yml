@@ -1,0 +1,42 @@
+on:
+  push:
+    branches:
+      - 3.0.0
+#     # Sequence of patterns matched against refs/tags
+#     tags:
+#       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+name: buildAndScp
+
+jobs:
+  publish:
+    name: Publish for ubuntu-18.04
+    runs-on: ubuntu-18.04
+
+    steps:
+    - uses: hecrj/setup-rust-action@master
+      with:
+        rust-version: stable
+
+    - uses: actions/checkout@v1
+
+    - name: Install Rust toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: nightly-2021-03-01
+        target: wasm32-unknown-unknown
+        profile: minimal
+        override: true
+        components: rustfmt, rust-src, clippy
+
+#     - name: Build
+#       run: cargo build --release
+      
+    - name: scp
+      run: |
+        ls -alht
+        ls -alht target/release/chainx
+        ls -alht target
+        apt install -y sshpass
+        sshpass -p xiechengqi scp -r target root@47.103.216.188:/root/ChainX
+        echo 'SUCCESS'
