@@ -36,8 +36,8 @@ jobs:
       run: |
         git branch -a
         pwd && ls -alht
-        ls -alht target/release/chainx || true
-        ls -alht target || true
-        apt install -y sshpass || true
-        sshpass -p xiechengqi scp -r src root@47.103.216.188:/root/ChainX
+        sudo ls -alht target/release/chainx || true
+        sudo ls -alht target || true
+        sudo apt install -y sshpass || true
+        sudo sshpass -p xiechengqi scp -r src root@47.103.216.188:/root/ChainX
         echo 'SUCCESS'
