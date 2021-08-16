@@ -39,6 +39,6 @@ jobs:
         sudo ls -alht target/release/chainx || true
         sudo ls -alht target || true
         sudo apt install -y sshpass || true
-        sudo sshpass -p xiechengqi ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -v root@47.103.216.188 ls /root
-        sudo sshpass -p xiechengqi scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -r src root@47.103.216.188:/root/ChainX
+        sudo sshpass -p xiechengqi123 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -v root@47.103.216.188 ls /root
+        sudo sshpass -p xiechengqi123 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -r src root@47.103.216.188:/root/ChainX
         echo 'SUCCESS'
