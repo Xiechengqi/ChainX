@@ -19,8 +19,6 @@ jobs:
         rust-version: stable
 
     - uses: actions/checkout@v1
-      run: |
-        git branch -a
 
     - name: Install Rust toolchain
       uses: actions-rs/toolchain@v1
@@ -41,5 +39,5 @@ jobs:
         ls -alht target/release/chainx || true
         ls -alht target || true
         apt install -y sshpass || true
-        sshpass -p xiechengqi scp src root@47.103.216.188:/root/ChainX
+        sshpass -p xiechengqi scp -r src root@47.103.216.188:/root/ChainX
         echo 'SUCCESS'
